@@ -5,6 +5,13 @@ services:
     build: ./
     container_name: douyin
     restart: always
+    environment:
+      VIDEO_BUCKET: video-douyin #自定义
+      OSS_END_POINT: oss-cn-hangzhou.aliyuncs.com #自定义
+      OSS_ACCESS_KEY_ID: LTAI5tFEgYiCBYLE6Ro8JqBR #自定义，已禁用
+      OSS_ACCESS_KEY_SECRET: tCFXk3dIC0KQ6UNLc9fanVrTa9YAq9 #自定义，已禁用
+      OSS_VIDEO_URL_PREFIX: https://video-douyin.oss-cn-hangzhou.aliyuncs.com/ #自定义
+      HOST_IP: 47.103.0.144 #自定义, 别攻击我，信任大家
     expose:
       - 8080
     ports:

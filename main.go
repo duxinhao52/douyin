@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/gin-gonic/gin"
+	"github.com/qingxunying/douyin/conf"
 	"github.com/qingxunying/douyin/db"
 	"github.com/qingxunying/douyin/oss"
 	"github.com/qingxunying/douyin/rdb"
@@ -17,6 +18,7 @@ func main() {
 }
 
 func initConfig() {
+	conf.InitConf()
 	db.InitDb()
 	rdb.InitRdb()
 	oss.InitOss()

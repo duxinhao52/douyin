@@ -3,7 +3,7 @@ package oss
 import (
 	"fmt"
 	"github.com/aliyun/aliyun-oss-go-sdk/oss"
-	"github.com/qingxunying/douyin/constdef"
+	"github.com/qingxunying/douyin/conf"
 	"github.com/qingxunying/douyin/util"
 	"github.com/sirupsen/logrus"
 	"mime/multipart"
@@ -13,7 +13,7 @@ import (
 func UpVideoToOss(file *multipart.FileHeader, userId int64) (string, error) {
 	fileName := filepath.Base(file.Filename)
 	finalName := fmt.Sprintf("%d_%s_%s", userId, util.CreateRandomString(1)[0], fileName)
-	bucket, err := ossClient.Bucket(constdef.VideoBucket)
+	bucket, err := ossClient.Bucket(conf.VideoBucket)
 	if err != nil {
 		logrus.Errorf("[UpVideoToOss] get video bucket error, err=%+v", err)
 		return "", err
@@ -25,6 +25,6 @@ func UpVideoToOss(file *multipart.FileHeader, userId int64) (string, error) {
 		return "", err
 	}
 
-	videoUrl := constdef.OssVideoUrlPrefix + finalName
+	videoUrl := conf.OssVideoUrlPrefix + finalName
 	return videoUrl, nil
 }

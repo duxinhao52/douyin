@@ -18,15 +18,6 @@ const (
 )
 
 const (
-	VideoBucket        = "video-douyin"
-	OssEndPoint        = "oss-cn-hangzhou.aliyuncs.com"
-	OssAccessKeyId     = "LTAI5tFEgYiCBYLE6Ro8JqBR"
-	OssAccessKeySecret = "tCFXk3dIC0KQ6UNLc9fanVrTa9YAq9"
-
-	OssVideoUrlPrefix = "https://video-douyin.oss-cn-hangzhou.aliyuncs.com/"
-)
-
-const (
 	LikeOn  = 1
 	LikeOff = 2
 

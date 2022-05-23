@@ -1,7 +1,9 @@
 package rdb
 
 import (
+	"fmt"
 	"github.com/go-redis/redis"
+	"github.com/qingxunying/douyin/conf"
 	"github.com/qingxunying/douyin/constdef"
 	"github.com/qingxunying/douyin/util"
 	"github.com/sirupsen/logrus"
@@ -11,11 +13,8 @@ var rdb *redis.Client
 
 func InitRdb() {
 	logrus.Infof("start init redis...")
-	// 47.103.0.144:6000
-	// 192.168.8.247:6000
-	// localhost:6379
 	rdb = redis.NewClient(&redis.Options{
-		Addr:     "47.103.0.144:6000",
+		Addr:     fmt.Sprintf("%s:6000", conf.HostIp),
 		Password: "",
 		DB:       0,
 		PoolSize: 100,
