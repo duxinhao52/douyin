@@ -1,0 +1,42 @@
+version: '3'
+
+services:
+  douyin:
+    build: ./
+    container_name: douyin
+    restart: always
+    expose:
+      - 8080
+    ports:
+      - 9000:8080
+    depends_on:
+      - mysql
+      - redis
+  mysql:
+    container_name: mysql
+    image: mysql
+    restart: always
+    command:
+      --default-authentication-plugin=mysql_native_password
+      --default-time_zone='+8:00'
+    environment:
+      MYSQL_ROOT_PASSWORD: 1234567890
+      MYSQL_DATABASE: douyin
+    volumes:
+      - /Users/duxinhao/Desktop/douyin/db/sql:/docker-entrypoint-initdb.d
+      - /var/lib/mysql:/var/lib/mysql
+    expose:
+      - 3306
+    ports:
+      - 5000:3306
+
+  redis:
+    container_name: redis
+    image: redis
+    restart: always
+    volumes:
+      - /usr/local/redis:/usr/local/redis
+    expose:
+      - 6379
+    ports:
+      - 6000:6379
